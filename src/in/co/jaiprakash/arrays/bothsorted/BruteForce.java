@@ -1,5 +1,9 @@
 package in.co.jaiprakash.arrays.bothsorted;
-
+/*
+ * Given two sorted arrays A(N)and B(M), merge them and create a new sorted array
+ * Time complexity: N + M + (N+M)^2
+ * Space complexity: N + M
+ */
 public class BruteForce {
 
 	public int[] readArrayInput() {
@@ -61,6 +65,27 @@ public class BruteForce {
 		}
 		
 		return arrayC;
+	}
+	
+	/*
+	 * Algorithm to sort the array. I am using bubble sort
+	 * Also make sure that ascending/descending order should be same as checkIfArrayIsSorted
+	 * or else test cases will fail
+	 */
+	public int [] sortArray(int [] array) {
+		for(int i = 0; i< array.length;i++) {
+			for(int j = i+1; j< array.length;j++) {
+				if(array[i] > array[j]) {
+					int temp = array[i];
+					array[i] = array[j];
+					array[j] = temp;
+					
+				}
+//				printArray(array);
+			}
+		}
+		
+		return array;
 	}
 
 }

@@ -36,6 +36,14 @@ class BruteForceTest {
 	}
 	
 	@Test
+	void testArrayCisSorted() {
+		BruteForce bf = new BruteForce();
+		int [] arrayC = bf.copyInArrayC(returnArrayA(), returnArrayB());
+		arrayC = bf.sortArray(arrayC);
+		boolean b = bf.checkIfArrayIsSorted(arrayC);
+		assertEquals(true, b);
+	}
+	@Test
 	void testcheckIfArrayIsSorted() {
 		BruteForce bf = new BruteForce();
 		boolean b = bf.checkIfArrayIsSorted(returnArrayA());
