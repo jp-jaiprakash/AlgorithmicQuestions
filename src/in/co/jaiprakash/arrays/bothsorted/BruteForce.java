@@ -70,7 +70,7 @@ public class BruteForce {
 	/*
 	 * Algorithm to sort the array. I am using bubble sort
 	 * Also make sure that ascending/descending order should be same as checkIfArrayIsSorted
-	 * or else test cases will fail
+	 * or else test cases will fail.
 	 */
 	public int [] sortArray(int [] array) {
 		for(int i = 0; i< array.length;i++) {
