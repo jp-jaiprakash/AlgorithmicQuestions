@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class ICBruteForceTest {
 
 	int[] returnArray() {
-		return new int[] { 7, 10, 6 };
+		return new int[] { 7, 10, 6,12,5,8 };
 	}
 
 	@Test
@@ -15,7 +15,7 @@ public class ICBruteForceTest {
 
 		ICBruteForce bf = new ICBruteForce();
 		int n = bf.getNoOfPairs(returnArray());
-		assertEquals(2, n);
+		assertEquals(8, n);
 
 	}
 

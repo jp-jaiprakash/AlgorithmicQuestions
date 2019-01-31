@@ -11,7 +11,7 @@ public class ICMergeTwistTest {
 	}
 	
 	@Test
-	void testIlessThanJ() {
+	public void testIlessThanJ() {
 		ICMergeTwist ict = new ICMergeTwist();
 		int n = ict.getNoOfPairs(returnArray());
 		assertEquals(2, n);

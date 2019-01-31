@@ -2,85 +2,64 @@ package in.co.jaiprakash.arrays.inversioncount;
 
 public class ICMergeTwist {
 
-	int[] mergeSort(int[] arr, int left, int right) {
+	int mergeSort(int[] arr, int left, int right, int [] temp) {
+		int inversionCcnt = 0;
 		if (left < right) {
 
 			int mid = (left + right) / 2;
 
-			mergeSort(arr, left, mid);
-			mergeSort(arr, mid + 1, right);
+			inversionCcnt = mergeSort(arr, left, mid, temp);
+			inversionCcnt += mergeSort(arr, mid + 1, right, temp);
 
-			return merge(arr, left, mid, right);
+			inversionCcnt += merge(arr, left, mid+1, right, temp);
 		}
-		return null;
+		return inversionCcnt;
 
 	}
 
-	private int[] merge(int[] arr, int left, int mid, int right) {
+	public int merge(int[] arr, int left, int mid, int right, int [] temp) {
 		// TODO Auto-generated method stub
-		int leftArr[] = new int[mid - left + 1];
-		int rightArr[] = new int[right - mid];
-		System.out.println("left is " + left);
-		System.out.println("right is " + right);
-		for (int y : arr)
-			System.out.print(y + " ");
-		System.out.println();
-		for (int i = 0; i < leftArr.length; i++)
-			leftArr[i] = arr[left + i];
+		
+		int inversionCcnt = 0;
 
-		for (int j = 0; j < rightArr.length; j++)
-			rightArr[j] = arr[mid + 1 + j];
+		int i = left;
+		int j = mid;
+		int k = left;
 
-//		for (int y : leftArr)
-//			System.out.print(y + " ");
-//		System.out.println();
-//
-//		for (int y : rightArr)
-//			System.out.print(y + " ");
-//		System.out.println();
-		System.out.println("******************8");
-		int i = 0;
-		int j = 0;
-		int k = 0;
-		while (i < leftArr.length && j < rightArr.length) {
-			if (leftArr[i] <= rightArr[j]) {
-				arr[k] = leftArr[i];
-				i++;
-			} else if (rightArr[j] < leftArr[i]) {
-				arr[k] = rightArr[j];
-				j++;
+		while (i <= mid-1 && j <= right) {
+			if (arr[i] <= arr[j]) {
+				temp[k++] = arr[i++];
+			} else if (arr[j] < arr[i]) {
+				temp[k++] = arr[j++];
+				inversionCcnt = inversionCcnt + (mid-i);
 			}
-			k++;
 		}
-		while (i < leftArr.length) {
-			arr[k] = leftArr[i];
-			i++;
-			k++;
+		while (i <= mid-1) {
+			temp[k++] = arr[i++];
 		}
 
-		while (j < rightArr.length) {
-			arr[k] = rightArr[j];
-			j++;
-			k++;
-		}
+		while (j <= right) 
+			temp[k++] = arr[j++];
 
-		return arr;
+		for(i = left; i<=right; i++)
+			arr[i] = temp[i];
+		return inversionCcnt;
 	}
 
 	public int getNoOfPairs(int[] array) {
 		// TODO Auto-generated method stub
-		int p1 = 0;
-		int p2 = array.length - 1;
-		while (p1 < p2) {
-
-		}
-		return 0;
+		int temp[] = new int[array.length];
+		int cnt = mergeSort(array, 0, array.length - 1, temp);
+		return cnt;
 	}
 
 	public static void main(String[] args) {
-		int arr[] = { 7, 10, 6, 5, 11 };
+		int arr[] = { 7, 10, 6 };
+		int temp[] = new int[arr.length];
 		ICMergeTwist ic = new ICMergeTwist();
-		int[] arr1 = ic.mergeSort(arr, 0, arr.length - 1);
+		int arr1 = ic.mergeSort(arr, 0, arr.length - 1, temp);
+		System.out.println(arr1);
+		
 
 	}
 }
