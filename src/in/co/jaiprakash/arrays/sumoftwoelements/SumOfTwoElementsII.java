@@ -1,5 +1,8 @@
 package in.co.jaiprakash.arrays.sumoftwoelements;
-
+/*
+ * Complexity is nlogn + n
+ * n:: for two pointers
+ */
 public class SumOfTwoElementsII {
 
 	public int[] mergeSort(int[] arr, int[] temp, int left, int right) {
