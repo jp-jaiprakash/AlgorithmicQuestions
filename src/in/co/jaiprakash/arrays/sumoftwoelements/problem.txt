@@ -1,0 +1,5 @@
+ar(N) : -1 10 2 18 -6 12 19 -10
+ar(i) ar(j) = k
+i != j
+
+Given a value k
